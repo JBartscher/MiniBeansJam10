@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctaq1dyt48vwb"]
+
+[ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="1_eyw7t"]
+[ext_resource type="Script" uid="uid://dwb7nhn2m70su" path="res://Game/UserInterface/play_area.gd" id="2_8q6dr"]
+[ext_resource type="FontFile" uid="uid://ctw8xkb43o71t" path="res://Game/UserInterface/fonts/Kenney Blocks.ttf" id="3_4nr0a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oomkl"]
+font = ExtResource("3_4nr0a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwxkx"]
+size = Vector2(122, 113)
+
+[node name="Play" type="NinePatchRect"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 120.0
+grow_vertical = 2
+texture = ExtResource("1_eyw7t")
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+script = ExtResource("2_8q6dr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = SubResource("LabelSettings_oomkl")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PlayDropZone" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 16.0
+offset_bottom = 127.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_eyw7t")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+
+[node name="Area2D" type="Area2D" parent="PlayDropZone"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayDropZone/Area2D"]
+position = Vector2(60, 55.5)
+shape = SubResource("RectangleShape2D_fwxkx")
+
+[node name="Center" type="Control" parent="PlayDropZone"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

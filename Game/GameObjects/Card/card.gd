@@ -20,30 +20,6 @@ var tween_rotation: Tween
 
 signal hover(card: Card)
 signal select(card: Card)
-signal deselect(card: Card)
-
-func _on_area_2d_mouse_entered() -> void:
-	emit_signal("hover", self)
-	
-	if tween_hover and tween_hover.is_running():
-		tween_hover.kill()
-		
-	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tween_hover.tween_property(self, "scale", Vector2(1.3,1.3),0.3)
-	
-	z_index = 10
-
-func _on_area_2d_mouse_exited() -> void:
-	if is_selected:
-		return
-	
-	if tween_hover and tween_hover.is_running():
-		tween_hover.kill()
-	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tween_hover.tween_property(self, "scale", Vector2.ONE, 0.6)
-	
-	z_index = 0
-
 
 func _physics_process(delta: float) -> void:
 	if is_selected:
@@ -65,6 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("click") && is_selected:
+		SignalBus.emit_signal("drop_card",self, $Area2D)
 		is_selected = false
 		is_returning = true
 
@@ -76,3 +53,26 @@ func _on_control_gui_input(event: InputEvent) -> void:
 		emit_signal("select", self)
 		target_position = global_position
 		target_rotation = rotation
+
+
+func _on_control_mouse_entered() -> void:
+	emit_signal("hover", self)
+
+	if tween_hover and tween_hover.is_running():
+		tween_hover.kill()
+		
+	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween_hover.tween_property(self, "scale", Vector2(1.3,1.3),0.3)
+	
+	z_index = 10
+	
+func _on_control_mouse_exited() -> void:
+	if is_selected:
+		return
+	
+	if tween_hover and tween_hover.is_running():
+		tween_hover.kill()
+	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween_hover.tween_property(self, "scale", Vector2.ONE, 0.6)
+	
+	z_index = 0

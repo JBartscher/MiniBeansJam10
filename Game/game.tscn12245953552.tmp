@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdg16e24bq8uw"]
+
+[ext_resource type="Script" uid="uid://tnxj1nkut2mp" path="res://Game/game.gd" id="1_7raqb"]
+[ext_resource type="PackedScene" uid="uid://dpf227bmnv5pt" path="res://Game/GameObjects/game_board.tscn" id="1_bk3v5"]
+[ext_resource type="PackedScene" uid="uid://d2j5vpfkapdfc" path="res://Game/GameObjects/Hand/card_hand.tscn" id="2_1r4le"]
+[ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="4_fwxkx"]
+[ext_resource type="FontFile" uid="uid://ctw8xkb43o71t" path="res://Game/UserInterface/Kenney Blocks.ttf" id="5_qmv3x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oomkl"]
+font = ExtResource("5_qmv3x")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_7raqb")
+
+[node name="GameBoard" parent="." instance=ExtResource("1_bk3v5")]
+
+[node name="CardHand" parent="." instance=ExtResource("2_1r4le")]
+position = Vector2(364, 247)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DiscardLabel" type="NinePatchRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 64.0
+texture = ExtResource("4_fwxkx")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/DiscardLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = SubResource("LabelSettings_oomkl")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PlayLabel" type="NinePatchRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 1.0
+offset_right = 280.0
+offset_bottom = 65.0
+texture = ExtResource("4_fwxkx")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PlayLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DISCARD"
+label_settings = SubResource("LabelSettings_oomkl")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

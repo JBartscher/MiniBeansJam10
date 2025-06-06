@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbnaeaduwx26k"]
 
 [ext_resource type="Texture2D" uid="uid://bp3m0udbr4qlk" path="res://Assets/card_hearts_K.png" id="1_kikvd"]
-[ext_resource type="Script" uid="uid://be0232fs3ae7x" path="res://Game/GameObjects/card.gd" id="1_rjlel"]
+[ext_resource type="Script" uid="uid://be0232fs3ae7x" path="res://Game/GameObjects/Card/card.gd" id="1_rjlel"]
 [ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardResource.gd" id="2_q5obu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjlel"]
@@ -31,3 +31,5 @@ offset_right = 20.0
 offset_bottom = 29.0
 
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
+[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
