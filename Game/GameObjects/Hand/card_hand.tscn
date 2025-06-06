@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2j5vpfkapdfc"]
+
+[ext_resource type="Script" uid="uid://ch7ta5fj0lvj8" path="res://Game/GameObjects/card_hand.gd" id="1_5km37"]
+[ext_resource type="Curve" uid="uid://qhowslhw6l1r" path="res://Game/GameObjects/Hand/PosXCurve.tres" id="2_da55u"]
+[ext_resource type="Curve" uid="uid://v4tth5joxhvx" path="res://Game/GameObjects/Hand/PosYCurve.tres" id="2_swcsj"]
+[ext_resource type="Curve" uid="uid://dxboa2ndrb8wu" path="res://Game/GameObjects/Hand/RotCurve.tres" id="4_07tem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07tem"]
+size = Vector2(199.695, 64)
+
+[node name="CardHand" type="Node2D"]
+script = ExtResource("1_5km37")
+CardCurveX = ExtResource("2_da55u")
+CardCurveY = ExtResource("2_swcsj")
+CardCurveRot = ExtResource("4_07tem")
+HAND_WIDTH = 85.0
+
+[node name="HandArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+shape = SubResource("RectangleShape2D_07tem")
+debug_color = Color(0.96969, 0, 0.459695, 0.42)
