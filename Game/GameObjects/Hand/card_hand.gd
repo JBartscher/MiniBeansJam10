@@ -10,7 +10,7 @@ var current_selected_card: Card
 
 var cards = {}
 
-const CARD = preload("res://card.tscn")
+const CARD = preload("res://Game/GameObjects/card.tscn")
 
 func add_cards() -> void:
 	for i in 15:
@@ -61,15 +61,9 @@ func get_card_transform(index: int) -> Transform2D:
 	t = t.rotated(card_deg)
 	t = t.translated(change_x)
 	t = t.translated(change_y)
-	
-	
+
 	return t
 	
-#func add_card() -> void:
-	#var card = CARD.instantiate()
-	#cards.append(card)
-	#add_child(card)
-	#refresh_card_position()
 	
 func _ready() -> void:
 	_reseize()
@@ -88,7 +82,7 @@ func get_card_ratio(index) -> float:
 func _reseize():
 	var screen_size = get_viewport_rect().size
 	self.position.x = screen_size.x / 2
-	self.position.y = screen_size.y * 0.8
+	self.position.y = screen_size.y * 0.85
 	var shape = RectangleShape2D.new()
 	shape.size = Vector2(screen_size.x * 0.6, screen_size.y * 0.25)
 

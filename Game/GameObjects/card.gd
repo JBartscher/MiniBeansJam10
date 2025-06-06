@@ -64,12 +64,12 @@ func _physics_process(delta: float) -> void:
 		rotation = lerp(rotation, target_rotation, 5 * delta)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("Click") && is_selected:
+	if event.is_action_released("click") && is_selected:
 		is_selected = false
 		is_returning = true
 
 func _on_control_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Click"):
+	if event.is_action_pressed("click"):
 		is_returning = false
 		print("select on ", self.get_canvas_item())
 		is_selected = true

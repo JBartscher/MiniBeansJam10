@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpf227bmnv5pt"]
+
+[ext_resource type="Script" uid="uid://ba63n0v6akbe2" path="res://Game/GameObjects/game_board.gd" id="1_u7epm"]
+[ext_resource type="Texture2D" uid="uid://blqxjcx3cbnr4" path="res://Assets/Points.png" id="2_jxar3"]
+[ext_resource type="Texture2D" uid="uid://dwcwr751n1sj1" path="res://Assets/Pentagram.png" id="2_t2g4f"]
+[ext_resource type="Texture2D" uid="uid://bpq1y76shl0up" path="res://Assets/Monster/pieceBlue_border07.png" id="3_t2g4f"]
+[ext_resource type="Texture2D" uid="uid://7legnlbcf5cg" path="res://Assets/pieceBlack_multi09.png" id="4_y64gc"]
+[ext_resource type="Texture2D" uid="uid://bvw7qydmpqjiv" path="res://Assets/pieceBlack_border09.png" id="5_px07f"]
+[ext_resource type="Texture2D" uid="uid://bletw3712d6fw" path="res://Assets/Monster/Eye.png" id="5_t2g4f"]
+
+[sub_resource type="Environment" id="Environment_61pcb"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="GameBoard" type="Node2D"]
+script = ExtResource("1_u7epm")
+
+[node name="StartPos" type="Marker2D" parent="."]
+position = Vector2(360, 0)
+
+[node name="Pentagram" type="Sprite2D" parent="StartPos"]
+modulate = Color(5, 1.5, 6, 1)
+z_index = -2
+position = Vector2(2.86102e-06, 10.5)
+scale = Vector2(1, 0.328125)
+texture = ExtResource("2_t2g4f")
+
+[node name="EndPos" type="Marker2D" parent="."]
+position = Vector2(360, 200)
+
+[node name="Points" type="Sprite2D" parent="EndPos"]
+scale = Vector2(1, 0.8)
+texture = ExtResource("2_jxar3")
+
+[node name="PieceBlackMulti09" type="Sprite2D" parent="EndPos"]
+position = Vector2(-7, -14)
+scale = Vector2(0.65625, 0.8125)
+texture = ExtResource("4_y64gc")
+
+[node name="PieceBlackBorder12" type="Sprite2D" parent="EndPos"]
+position = Vector2(10.7697, -10)
+rotation = 3.14159
+scale = Vector2(0.524054, -0.5)
+texture = ExtResource("5_px07f")
+
+[node name="PieceBlackBorder09" type="Sprite2D" parent="EndPos"]
+position = Vector2(26.75, -4)
+scale = Vector2(0.523437, 0.5)
+texture = ExtResource("5_px07f")
+
+[node name="PieceBlackBorder10" type="Sprite2D" parent="EndPos"]
+position = Vector2(-20, -5)
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("5_px07f")
+
+[node name="PieceBlackBorder11" type="Sprite2D" parent="EndPos"]
+position = Vector2(1, 5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_px07f")
+
+[node name="Monster" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(360, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Monster"]
+position = Vector2(0, -13)
+texture = ExtResource("3_t2g4f")
+
+[node name="EyeL" type="Sprite2D" parent="Monster/Sprite2D"]
+modulate = Color(8, 1, 1, 1)
+position = Vector2(-4, -16)
+rotation = -0.523599
+scale = Vector2(0.5, 0.7)
+texture = ExtResource("5_t2g4f")
+
+[node name="EyeR" type="Sprite2D" parent="Monster/Sprite2D"]
+modulate = Color(8, 1, 1, 1)
+position = Vector2(4, -16)
+rotation = 0.523599
+scale = Vector2(-0.5, 0.7)
+texture = ExtResource("5_t2g4f")
+
+[node name="Cultists" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_61pcb")
