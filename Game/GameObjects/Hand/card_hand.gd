@@ -15,6 +15,7 @@ func _ready() -> void:
 	# connect signal that puts our hand in the middle everytime the screen size changes
 	get_tree().get_root().size_changed.connect(_reseize)
 
+	HandController.cards = []
 	add_cards()
 	
 	SignalBus.refresh_hand.connect(refresh_card_position)
@@ -45,6 +46,9 @@ func _on_select_card(card: Card):
 
 func refresh_card_position():
 	var tween = get_tree().create_tween()
+	
+	print(HandController)
+	print(HandController.cards)
 	
 	for c in HandController.cards:
 		c.global_position = self.global_position

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://ba5jjlxkle6y5"]
+
+[ext_resource type="Texture2D" uid="uid://bbrptjfxcl6sx" path="res://Assets/Cards/CardPictures/PlayCard_BadInvestment.png" id="2_04ugp"]
+[ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardBase.gd" id="2_cvllw"]
+
+[resource]
+script = ExtResource("2_cvllw")
+cost = -2
+texture = ExtResource("2_04ugp")
+name = "Bad Investment"
+description = "Does nothing but clutters the deck. Selling this costs 4$"
+metadata/_custom_type_script = "uid://lk2ma57o8vk1"

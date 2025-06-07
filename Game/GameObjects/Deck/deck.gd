@@ -11,4 +11,3 @@ func _ready() -> void:
 		s.position.x += CardOffset * i
 		s.position.y += -1 * CardOffset * i
 		add_child(s)
-		

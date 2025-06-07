@@ -8,6 +8,10 @@ func get_top_card():
 	
 	return cards_in_deck.pop_front() 
 	
+func add_card_to_deck(card: PlayingCard):
+	cards_in_deck.append(card)
+	print("cards in deck: ", len(cards_in_deck))
+	
 func return_card_to_deck(card: PlayingCard):
 	cards_in_deck.append(card)
 
@@ -16,5 +20,10 @@ func _ready() -> void:
 	cards_in_deck.append(GameState.big_loan_resource)
 	cards_in_deck.append(GameState.small_loan_resource)
 	cards_in_deck.append(GameState.big_loan_resource)
+	cards_in_deck.append(GameState.shopping_resource)
+	cards_in_deck.append(GameState.shopping_resource)
+	cards_in_deck.append(GameState.shopping_resource)
+	cards_in_deck.append(GameState.shopping_resource)
+	cards_in_deck.append(GameState.shopping_resource)
 	cards_in_deck.append(GameState.shopping_resource)
 	cards_in_deck.append(GameState.shopping_resource)

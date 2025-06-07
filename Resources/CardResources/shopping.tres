@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_rax7g")
-cost = 0
+cost = 5
 texture = ExtResource("3_tk6k6")
 name = "Shopping"
 description = "At Turn go to Shop"

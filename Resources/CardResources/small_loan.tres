@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ty4g2")
-cost = 0
+cost = 2
 texture = ExtResource("3_bcgq4")
 name = "Small Loan"
 description = "Get 5$. Pay back 1$ for 6 turns."

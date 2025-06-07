@@ -12,3 +12,9 @@ func on_action():
 	
 func on_turn():
 	print("base turn")
+	
+func remove_from_game():
+	pass
+
+func remove():
+	pass
