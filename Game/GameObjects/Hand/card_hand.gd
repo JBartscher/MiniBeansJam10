@@ -10,6 +10,8 @@ var current_selected_card: Card
 
 const CARD = preload("res://Game/GameObjects/Card/card.tscn")
 
+var draw_card_tween: Tween
+
 func _ready() -> void:
 	pass
 	#_reseize()
@@ -19,6 +21,7 @@ func _ready() -> void:
 	
 	if GameState.first_round:
 		add_inital_cards()
+
 	else:
 		# recreate cards from last turn
 		for c_r in HandController.card_buffer_between_scene_transitition:
@@ -28,6 +31,7 @@ func _ready() -> void:
 			card.connect("hover", _on_hover_card)
 			card.connect("select", _on_select_card)
 			add_child(card)
+			card.flip_card_to_front()
 			HandController.card_buffer_between_scene_transitition = []
 		# draw two new cards
 		for i in 2:
@@ -37,24 +41,36 @@ func _ready() -> void:
 			HandController.add_card_to_hand(card)
 			card.connect("hover", _on_hover_card)
 			card.connect("select", _on_select_card)
+			var transform: Transform2D = $Deck.get_transform()
+			card.global_position = Vector2(transform.origin)
 			add_child(card)
-	refresh_card_position()
+			from_deck_to_hand(card, i*0.1)
+			card.flip_card_to_front()
+		draw_card_tween.tween_callback(refresh_card_position).set_delay(0.15)
 	
 	SignalBus.refresh_hand.connect(refresh_card_position)
 
 
 func add_inital_cards() -> void:
-	for i in 4:
+	for i in 6:
 		var card_resource = DeckController.get_top_card()
 		
 		var card:Card = CARD.instantiate()
-		
 		card.card_resource = card_resource
 		HandController.add_card_to_hand(card)
 		card.connect("hover", _on_hover_card)
 		card.connect("select", _on_select_card)
+		var transform: Transform2D = $Deck.get_transform()
+		card.global_position = Vector2(transform.origin)
 		add_child(card)
-	refresh_card_position()
+		from_deck_to_hand(card, i*0.1)
+		card.flip_card_to_front()
+	
+	draw_card_tween.tween_callback(refresh_card_position).set_delay(0.15)
+	
+func from_deck_to_hand(card: Card, t: float):
+	draw_card_tween = get_tree().create_tween()
+	draw_card_tween.chain().tween_property(card, "global_position", self.global_position, 0.3 +t)
 	
 func _on_hover_card(card: Card):
 	if current_hovered_card and current_hovered_card != card:
