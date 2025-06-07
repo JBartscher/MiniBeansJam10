@@ -15,16 +15,37 @@ func _ready() -> void:
 	# connect signal that puts our hand in the middle everytime the screen size changes
 	get_tree().get_root().size_changed.connect(_reseize)
 
-	HandController.cards = []
-	add_cards()
+	
+	if GameState.first_round:
+		add_inital_cards()
+	else:
+		# recreate cards from last turn
+		for c_r in HandController.card_buffer_between_scene_transitition:
+			var card:Card = CARD.instantiate()
+			card.card_resource = c_r
+			HandController.add_card_to_hand(card)
+			card.connect("hover", _on_hover_card)
+			card.connect("select", _on_select_card)
+			add_child(card)
+			HandController.card_buffer_between_scene_transitition = []
+		# draw two new cards
+		for i in 2:
+			var card:Card = CARD.instantiate()
+			var card_resource = DeckController.get_top_card()
+			card.card_resource = card_resource
+			HandController.add_card_to_hand(card)
+			card.connect("hover", _on_hover_card)
+			card.connect("select", _on_select_card)
+			add_child(card)
+	refresh_card_position()
 	
 	SignalBus.refresh_hand.connect(refresh_card_position)
 
 
-func add_cards() -> void:
+func add_inital_cards() -> void:
 	for i in 4:
 		var card_resource = DeckController.get_top_card()
-		print(card_resource)
+		
 		var card:Card = CARD.instantiate()
 		
 		card.card_resource = card_resource
@@ -35,7 +56,6 @@ func add_cards() -> void:
 	refresh_card_position()
 	
 func _on_hover_card(card: Card):
-	# print("hover card: ", card)
 	if current_hovered_card and current_hovered_card != card:
 		current_hovered_card._on_control_mouse_exited()
 	current_hovered_card = card	
@@ -46,9 +66,6 @@ func _on_select_card(card: Card):
 
 func refresh_card_position():
 	var tween = get_tree().create_tween()
-	
-	print(HandController)
-	print(HandController.cards)
 	
 	for c in HandController.cards:
 		c.global_position = self.global_position
