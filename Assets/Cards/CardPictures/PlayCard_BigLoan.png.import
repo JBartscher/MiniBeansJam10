@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blqxjcx3cbnr4"
-path="res://.godot/imported/Points.png-40255fe7a06c6af0a87ecc43df03417b.ctex"
+uid="uid://5n3wrhjahvsi"
+path="res://.godot/imported/PlayCard_BigLoan.png-95b1387af1b0a6c7e04a9b48b36f373c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Points.png"
-dest_files=["res://.godot/imported/Points.png-40255fe7a06c6af0a87ecc43df03417b.ctex"]
+source_file="res://Assets/Cards/CardPictures/PlayCard_BigLoan.png"
+dest_files=["res://.godot/imported/PlayCard_BigLoan.png-95b1387af1b0a6c7e04a9b48b36f373c.ctex"]
 
 [params]
 

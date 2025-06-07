@@ -1,21 +1,59 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdg16e24bq8uw"]
+[gd_scene load_steps=9 format=3 uid="uid://bdg16e24bq8uw"]
 
 [ext_resource type="Script" uid="uid://tnxj1nkut2mp" path="res://Game/game.gd" id="1_7raqb"]
-[ext_resource type="PackedScene" uid="uid://dpf227bmnv5pt" path="res://Game/GameObjects/game_board.tscn" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://d2j5vpfkapdfc" path="res://Game/GameObjects/Hand/card_hand.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://ctaq1dyt48vwb" path="res://Game/UserInterface/play_area.tscn" id="4_fwxkx"]
+[ext_resource type="FontFile" uid="uid://ct3xw37ohqjk6" path="res://Game/UserInterface/fonts/Kenney Pixel Square.ttf" id="4_oomkl"]
 [ext_resource type="PackedScene" uid="uid://byi0sia3wn1br" path="res://Game/UserInterface/discard_area.tscn" id="5_qmv3x"]
+[ext_resource type="PackedScene" uid="uid://bo7utq1ijgovp" path="res://Game/GameObjects/Deck/deck.tscn" id="6_qmv3x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_buohc"]
+font = ExtResource("4_oomkl")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_kul4i"]
+font = ExtResource("4_oomkl")
+font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7raqb")
-
-[node name="GameBoard" parent="." instance=ExtResource("1_bk3v5")]
-visible = false
 
 [node name="CardHand" parent="." instance=ExtResource("2_1r4le")]
 position = Vector2(364, 247)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Money" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0 $"
+label_settings = SubResource("LabelSettings_buohc")
+
+[node name="Action" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action: 0/3"
+label_settings = SubResource("LabelSettings_buohc")
+
+[node name="Turn" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Turn: 0"
+label_settings = SubResource("LabelSettings_kul4i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -47,3 +85,9 @@ offset_top = -16.0
 offset_right = 120.0
 offset_bottom = 16.0
 grow_horizontal = 1
+
+[node name="Deck" parent="." instance=ExtResource("6_qmv3x")]
+offset_left = 662.0
+offset_top = 36.0
+offset_right = 704.0
+offset_bottom = 95.0

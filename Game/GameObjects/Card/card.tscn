@@ -1,20 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbnaeaduwx26k"]
+[gd_scene load_steps=8 format=3 uid="uid://dbnaeaduwx26k"]
 
-[ext_resource type="Texture2D" uid="uid://bp3m0udbr4qlk" path="res://Assets/card_hearts_K.png" id="1_kikvd"]
 [ext_resource type="Script" uid="uid://be0232fs3ae7x" path="res://Game/GameObjects/Card/card.gd" id="1_rjlel"]
-[ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardResource.gd" id="2_q5obu"]
+[ext_resource type="Resource" uid="uid://bkgp6jnu3lnut" path="res://Resources/CardResources/big_loan.tres" id="2_o6ois"]
+[ext_resource type="Texture2D" uid="uid://chtlo6opc8jru" path="res://Assets/Cards/PlayCardLayout.png" id="3_vp6x2"]
+[ext_resource type="Texture2D" uid="uid://b2b3yada0mr8y" path="res://Assets/Cards/CardPictures/PlayCard_SmallLoan.png" id="4_sjjv7"]
+[ext_resource type="FontFile" uid="uid://b4nwhv1gcm4oj" path="res://Game/UserInterface/fonts/Kenney High.ttf" id="4_vp6x2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjlel"]
-size = Vector2(40, 58)
+size = Vector2(54, 78)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjjv7"]
+font = ExtResource("4_vp6x2")
+font_size = 8
+font_color = Color(0.0121738, 0.149541, 0.139935, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_rjlel")
-card_resource = ExtResource("2_q5obu")
+card_resource = ExtResource("2_o6ois")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 
 [node name="CardLayout" type="Sprite2D" parent="BackBufferCopy"]
-texture = ExtResource("1_kikvd")
+texture = ExtResource("3_vp6x2")
+
+[node name="CardImage" type="Sprite2D" parent="BackBufferCopy"]
+texture = ExtResource("4_sjjv7")
+offset = Vector2(0, -11)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -25,10 +37,31 @@ shape = SubResource("RectangleShape2D_rjlel")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -20.0
-offset_top = -29.0
-offset_right = 20.0
-offset_bottom = 29.0
+offset_left = -27.0
+offset_top = -39.0
+offset_right = 27.0
+offset_bottom = 39.0
+
+[node name="CardName" type="Label" parent="."]
+clip_contents = true
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = -22.0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_sjjv7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardDescription" type="Label" parent="."]
+clip_contents = true
+offset_left = -24.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 36.0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_sjjv7")
+autowrap_mode = 3
 
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]

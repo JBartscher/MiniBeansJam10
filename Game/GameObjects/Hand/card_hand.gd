@@ -21,8 +21,12 @@ func _ready() -> void:
 
 
 func add_cards() -> void:
-	for i in 10:
+	for i in 4:
+		var card_resource = DeckController.get_top_card()
+		print(card_resource)
 		var card:Card = CARD.instantiate()
+		
+		card.card_resource = card_resource
 		HandController.add_card_to_hand(card)
 		card.connect("hover", _on_hover_card)
 		card.connect("select", _on_select_card)
@@ -60,7 +64,7 @@ func get_card_transform(index: int) -> Transform2D:
 	var r = get_card_ratio(index)
 	var card:Card = HandController.get_card(index)
 	
-	var t = card.transform
+	var t = card.get_transform()
 	
 	var change_x := CardCurveX.sample(r) * Vector2.LEFT * HAND_WIDTH
 	var change_y := CardCurveY.sample(r) * Vector2.UP * 10

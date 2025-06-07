@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpq1y76shl0up"
-path="res://.godot/imported/pieceBlue_border07.png-e14ca5e3f3f51d1fe4732abc447d2843.ctex"
+uid="uid://chtlo6opc8jru"
+path="res://.godot/imported/PlayCardLayout.png-a186b0b0a323a24f82bd83867f11c1bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Monster/pieceBlue_border07.png"
-dest_files=["res://.godot/imported/pieceBlue_border07.png-e14ca5e3f3f51d1fe4732abc447d2843.ctex"]
+source_file="res://Assets/Cards/PlayCardLayout.png"
+dest_files=["res://.godot/imported/PlayCardLayout.png-a186b0b0a323a24f82bd83867f11c1bb.ctex"]
 
 [params]
 

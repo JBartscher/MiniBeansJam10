@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvw7qydmpqjiv"
-path="res://.godot/imported/pieceBlack_border09.png-deb93311fc71172be587d885567b57aa.ctex"
+uid="uid://b2b3yada0mr8y"
+path="res://.godot/imported/PlayCard_SmallLoan.png-7aa721b9a51e0adb16a04bccc34d4641.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pieceBlack_border09.png"
-dest_files=["res://.godot/imported/pieceBlack_border09.png-deb93311fc71172be587d885567b57aa.ctex"]
+source_file="res://Assets/Cards/CardPictures/PlayCard_SmallLoan.png"
+dest_files=["res://.godot/imported/PlayCard_SmallLoan.png-7aa721b9a51e0adb16a04bccc34d4641.ctex"]
 
 [params]
 

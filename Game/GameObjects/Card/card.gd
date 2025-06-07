@@ -8,6 +8,8 @@ var is_returning = false
 var target_position: Vector2
 var target_rotation: float = 0.0
 
+
+
 # rotation oscillator
 var displacement := 0.0 
 var spring := 250.0
@@ -20,6 +22,15 @@ var tween_rotation: Tween
 
 signal hover(card: Card)
 signal select(card: Card)
+
+var effect
+
+func _ready() -> void:
+	print("ready card")
+	effect = card_resource.card_effect.new()
+	$CardName.text = card_resource.name
+	$CardDescription.text = card_resource.description
+	$BackBufferCopy/CardImage.texture = card_resource.texture
 
 func _physics_process(delta: float) -> void:
 	if is_selected:
@@ -53,7 +64,6 @@ func _on_control_gui_input(event: InputEvent) -> void:
 		emit_signal("select", self)
 		target_position = global_position
 		target_rotation = rotation
-
 
 func _on_control_mouse_entered() -> void:
 	emit_signal("hover", self)

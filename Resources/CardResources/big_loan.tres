@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=4 format=3 uid="uid://bkgp6jnu3lnut"]
+
+[ext_resource type="Script" uid="uid://cocnogr0hdm5x" path="res://Resources/CardEffects/BigLoan.gd" id="1_3y42s"]
+[ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardBase.gd" id="2_rqoe1"]
+[ext_resource type="Texture2D" uid="uid://5n3wrhjahvsi" path="res://Assets/Cards/CardPictures/PlayCard_BigLoan.png" id="3_rqoe1"]
+
+[resource]
+script = ExtResource("2_rqoe1")
+cost = 0
+texture = ExtResource("3_rqoe1")
+name = "Big Loan"
+description = "Get 10$. Pay back 1$ for 12 turns."
+card_effect = ExtResource("1_3y42s")
+metadata/_custom_type_script = "uid://lk2ma57o8vk1"
