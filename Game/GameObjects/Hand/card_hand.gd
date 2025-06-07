@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export var CardCurveX: Curve
 @export var CardCurveY: Curve
@@ -11,9 +11,10 @@ var current_selected_card: Card
 const CARD = preload("res://Game/GameObjects/Card/card.tscn")
 
 func _ready() -> void:
-	_reseize()
-	# connect signal that puts our hand in the middle everytime the screen size changes
-	get_tree().get_root().size_changed.connect(_reseize)
+	pass
+	#_reseize()
+	## connect signal that puts our hand in the middle everytime the screen size changes
+	#get_tree().get_root().size_changed.connect(_reseize)
 
 	
 	if GameState.first_round:
@@ -103,12 +104,12 @@ func get_card_ratio(index) -> float:
 		hand_ratio = float(index) / float(len(HandController.cards) -1)
 	return hand_ratio
 	
-func _reseize():
-	var screen_size = get_viewport_rect().size
-	self.position.x = screen_size.x / 2
-	self.position.y = screen_size.y * 0.85
-	var shape = RectangleShape2D.new()
-	shape.size = Vector2(screen_size.x * 0.6, screen_size.y * 0.25)
-
-	#shape.set(" RectangleShape2D.new(200,100)")
-	$HandArea/CollisionShape2D.set_shape(shape)
+#func _reseize():
+	#var screen_size = get_viewport_rect().size
+	#self.position.x = screen_size.x / 2
+	#self.position.y = screen_size.y * 0.85
+	#var shape = RectangleShape2D.new()
+	#shape.size = Vector2(screen_size.x * 0.6, screen_size.y * 0.25)
+#
+	##shape.set(" RectangleShape2D.new(200,100)")
+	#$HandArea/CollisionShape2D.set_shape(shape)
