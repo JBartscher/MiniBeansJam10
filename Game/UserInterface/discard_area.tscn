@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://byi0sia3wn1br"]
+[gd_scene load_steps=7 format=3 uid="uid://byi0sia3wn1br"]
 
 [ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="1_anuv1"]
 [ext_resource type="Script" uid="uid://c62po1x4rn8bq" path="res://Game/UserInterface/discard_area.gd" id="2_5nqa4"]
 [ext_resource type="FontFile" uid="uid://ctw8xkb43o71t" path="res://Game/UserInterface/fonts/Kenney Blocks.ttf" id="2_ly1cw"]
+[ext_resource type="PackedScene" uid="uid://bf7e417naukvo" path="res://card_drop_sfx.tscn" id="4_5nqa4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oomkl"]
 font = ExtResource("2_ly1cw")
@@ -71,3 +72,5 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CardDropSfx" parent="." instance=ExtResource("4_5nqa4")]

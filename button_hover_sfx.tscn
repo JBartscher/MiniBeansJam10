@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5wps1h8wvlxq"]
+
+[ext_resource type="AudioStream" uid="uid://dja2uamyugqj0" path="res://Assets/Sound/button_hover.wav" id="1_015sh"]
+
+[node name="ButtonHoverSfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_015sh")
+pitch_scale = 2.65

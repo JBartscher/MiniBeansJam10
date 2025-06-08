@@ -1,7 +1,6 @@
 extends Node
 
 var first_round = true
-
 var _account_balance: int = 10
 
 var action = 0
@@ -14,6 +13,8 @@ var big_loan_resource = preload("res://Resources/CardResources/big_loan.tres")
 var shopping_resource = preload("res://Resources/CardResources/shopping.tres")
 var bad_investment_resource = preload("res://Resources/CardResources/bad_investment.tres")
 var personal_bankruptcy_resource = preload("res://Resources/CardResources/personal_bankruptcy.tres")
+var corporate_greed_resource = preload("res://Resources/CardResources/corporate_greed.tres")
+var crypto_scam_resource = preload("res://Resources/CardResources/crypto_scam.tres")
 
 var card_pool = []
 
@@ -21,11 +22,6 @@ signal account_balance_changed(old_account_balance: int, new_account_balance: in
 
 func _on_change_scene(scene: PackedScene):
 	get_tree().change_scene_to_packed(scene)
-	#var tree = get_tree()
-	#var cur_scene = tree.get_current_scene()
-	#tree.get_root().add_child(new_scene)
-	#tree.get_root().remove_child(cur_scene)
-	#tree.set_current_scene(new_scene)
 
 func get_random_card_resource_from_pool() -> PlayingCard:
 	var random_card_resource = card_pool.pick_random()
@@ -49,6 +45,8 @@ func _ready() -> void:
 	card_pool.append(shopping_resource)
 	card_pool.append(bad_investment_resource)
 	card_pool.append(personal_bankruptcy_resource)
+	card_pool.append(corporate_greed_resource)
+	card_pool.append(crypto_scam_resource)
 	
 func _on_action_progressed():
 	action += 1
@@ -61,3 +59,5 @@ func _on_turn_progressed():
 	first_round = false
 	turn += 1
 	print("progress turn to ", turn)
+	if _account_balance <= -100:
+		get_tree().change_scene_to_file("res://Game/UserInterface/game_over.tscn")

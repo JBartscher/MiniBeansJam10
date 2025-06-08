@@ -144,3 +144,8 @@ func get_card_ratio(index) -> float:
 func _on_idle_action_button_pressed() -> void:
 	GameState.change_account_balance(-2)
 	SignalBus.emit_signal("action_progressed")
+	$ButtonClickSfx.play()
+
+func _on_idle_action_button_mouse_entered() -> void:
+	if $IdleActionButton.visible and not $IdleActionButton.disabled:
+		$ButtonHoverSfx.play()

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf7e417naukvo"]
+
+[ext_resource type="AudioStream" uid="uid://elasl1moya6m" path="res://Assets/Sound/card_drop.wav" id="1_7denn"]
+
+[node name="CardDropSfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_7denn")
+pitch_scale = 0.7

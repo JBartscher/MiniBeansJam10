@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://u0b3fspns44q"]
+[gd_scene load_steps=11 format=3 uid="uid://u0b3fspns44q"]
 
 [ext_resource type="Script" uid="uid://jki17iwupbf4" path="res://Game/UserInterface/shopping_item.gd" id="1_kw1xt"]
 [ext_resource type="FontFile" uid="uid://4uamk5gqxaoh" path="res://Game/UserInterface/fonts/Kenney High Square.ttf" id="1_wpgi0"]
 [ext_resource type="Texture2D" uid="uid://chtlo6opc8jru" path="res://Assets/Cards/PlayCardLayout.png" id="2_kw1xt"]
 [ext_resource type="Texture2D" uid="uid://b2b3yada0mr8y" path="res://Assets/Cards/CardPictures/PlayCard_SmallLoan.png" id="3_wboan"]
 [ext_resource type="FontFile" uid="uid://b4nwhv1gcm4oj" path="res://Game/UserInterface/fonts/Kenney High.ttf" id="4_b35fi"]
+[ext_resource type="PackedScene" uid="uid://5wps1h8wvlxq" path="res://button_hover_sfx.tscn" id="6_b35fi"]
+[ext_resource type="PackedScene" uid="uid://vgdegqx47gq8" path="res://button_click_sfx.tscn" id="7_vb6ik"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7fj4s"]
 font = ExtResource("1_wpgi0")
@@ -84,4 +86,9 @@ theme_override_fonts/font = ExtResource("1_wpgi0")
 theme_override_font_sizes/font_size = 32
 text = "BUY"
 
+[node name="ButtonHoverSfx" parent="." instance=ExtResource("6_b35fi")]
+
+[node name="ButtonClickSfx" parent="." instance=ExtResource("7_vb6ik")]
+
+[connection signal="mouse_entered" from="MarginContainer/HBox/BuyButton" to="." method="_on_buy_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/HBox/BuyButton" to="." method="_on_buy_button_pressed"]

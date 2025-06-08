@@ -1,9 +1,13 @@
 extends CardEffect
 
 var credit_period = 12
+var already_played = false
 	
 func on_play():
+	if already_played:
+		return
 	GameState.change_account_balance(10)
+	already_played = true
 	
 func on_discard():
 	credit_period = 0

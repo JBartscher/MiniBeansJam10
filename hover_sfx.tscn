@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j55qjag48pv7"]
+
+[ext_resource type="AudioStream" uid="uid://djwucevx8t662" path="res://Assets/Sound/card_hover.wav" id="1_n8v30"]
+
+[node name="HoverSfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_n8v30")

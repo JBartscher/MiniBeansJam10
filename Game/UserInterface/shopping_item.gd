@@ -26,3 +26,7 @@ func _on_buy_button_pressed() -> void:
 	$MarginContainer/HBox/BuyButton.disabled = true
 	
 	DeckController.add_card_to_deck(current_card_resource)
+	$ButtonClickSfx.play()
+
+func _on_buy_button_mouse_entered() -> void:
+	$ButtonHoverSfx.play()

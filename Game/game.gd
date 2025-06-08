@@ -19,11 +19,7 @@ func _input(event: InputEvent) -> void:
 func _on_balance_changed(old_balance: int, new_balance: int):
 	animate_balance_value_change(old_balance, new_balance)
 	
-func animate_balance_value_change(value_before: int, new_value:int):
-	#$UI/CoinCounter/Coin/CopperCoinParticle.emitting = true
-	#$UI/CoinCounter/Coin/SilverCoinParticle.emitting = true
-	#$UI/CoinCounter/Coin/GoldCoinParticle.emitting = true
-	
+func animate_balance_value_change(value_before: int, new_value:int):	
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_method(count_to, value_before, new_value, 1.2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2j5vpfkapdfc"]
+[gd_scene load_steps=10 format=3 uid="uid://d2j5vpfkapdfc"]
 
 [ext_resource type="Script" uid="uid://ch7ta5fj0lvj8" path="res://Game/GameObjects/Hand/card_hand.gd" id="1_5km37"]
 [ext_resource type="Curve" uid="uid://qhowslhw6l1r" path="res://Game/GameObjects/Hand/PosXCurve.tres" id="2_da55u"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bo7utq1ijgovp" path="res://Game/GameObjects/Deck/deck.tscn" id="5_saj2o"]
 [ext_resource type="PackedScene" uid="uid://du4tar7bvgsel" path="res://Game/GameObjects/Deck/graveyard.tscn" id="6_cnkp0"]
 [ext_resource type="FontFile" uid="uid://4uamk5gqxaoh" path="res://Game/UserInterface/fonts/Kenney High Square.ttf" id="7_3c0i3"]
+[ext_resource type="PackedScene" uid="uid://vgdegqx47gq8" path="res://button_click_sfx.tscn" id="8_bj227"]
+[ext_resource type="PackedScene" uid="uid://5wps1h8wvlxq" path="res://button_hover_sfx.tscn" id="9_jbkv6"]
 
 [node name="CardHandAndDeck" type="Control"]
 layout_mode = 3
@@ -63,4 +65,9 @@ disabled = true
 text = "BUY ACTION 
 FOR 2$"
 
+[node name="ButtonClickSfx" parent="." instance=ExtResource("8_bj227")]
+
+[node name="ButtonHoverSfx" parent="." instance=ExtResource("9_jbkv6")]
+
+[connection signal="mouse_entered" from="IdleActionButton" to="." method="_on_idle_action_button_mouse_entered"]
 [connection signal="pressed" from="IdleActionButton" to="." method="_on_idle_action_button_pressed"]

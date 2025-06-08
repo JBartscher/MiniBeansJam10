@@ -27,7 +27,7 @@ func _on_turn_progressed() -> void:
 			card_dummy.global_position = $PlayDropZone/Center.global_position
 			card_dummy.card_resource = card.card_resource.duplicate()
 			SignalBus.emit_signal("add_card_to_graveyard", card_dummy)
-			# cards_on_play.erase(card)
+			DeckController.cards_in_graveyard.append(card.card_resource.duplicate())
 			card.queue_free()
 	
 	var cards_still_in_play = cards_on_play.filter(func(c:Card): return not c.effect.to_graveyard())
@@ -40,7 +40,8 @@ func _on_deselect(card: Card, area: Area2D):
 	if area not in $PlayDropZone/Area2D.get_overlapping_areas():
 		return
 		
-	# print("in play area")
+	$CardDropSfx.play()
+	
 	var pos = $PlayDropZone/Center.global_position 
 	card.target_position = pos
 	card.target_rotation = 0.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3cb4ltigx3sk"]
+
+[ext_resource type="Shader" uid="uid://40f2kfgegw0l" path="res://background_swirl.gdshader" id="1_20j60"]
+[ext_resource type="Script" uid="uid://dvotqnmsyi4fu" path="res://background.gd" id="2_wtdx4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lon5i"]
+shader = ExtResource("1_20j60")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 0.5
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.35, 0.3, 0.2, 1)
+shader_parameter/colour_2 = Color(0.6, 0.5, 0.3, 1)
+shader_parameter/colour_3 = Color(0.0706287, 0.105032, 0.296115, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 700.0
+
+[node name="Background" type="ColorRect"]
+material = SubResource("ShaderMaterial_lon5i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_wtdx4")

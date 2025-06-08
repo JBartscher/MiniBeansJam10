@@ -5,6 +5,9 @@ const SHOPPING_ITEM = preload("res://Game/UserInterface/shopping_item.tscn")
 const GAME_SCENE = preload("res://Game/game.tscn")
 
 func _ready() -> void:
+	# dont know why this buggs
+	HandController.cards = []
+	
 	_on_balance_changed(GameState._account_balance, GameState._account_balance)
 	GameState.account_balance_changed.connect(_on_balance_changed)
 	
@@ -32,4 +35,9 @@ func count_to(value:int) -> void:
 	$MarginContainer/Money.text = money_label_fmt_str % value
 
 func _on_continue_button_pressed() -> void:
-	SignalBus.emit_signal("change_scene", GAME_SCENE)
+	$ButtonClickSfx.connect("finished", func(): return SignalBus.emit_signal("change_scene", GAME_SCENE))
+	$ButtonClickSfx.play()
+
+
+func _on_continue_button_mouse_entered() -> void:
+	$ButtonHoverSfx.play()

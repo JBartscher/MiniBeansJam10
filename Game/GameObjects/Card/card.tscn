@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbnaeaduwx26k"]
+[gd_scene load_steps=10 format=3 uid="uid://dbnaeaduwx26k"]
 
 [ext_resource type="Script" uid="uid://be0232fs3ae7x" path="res://Game/GameObjects/Card/card.gd" id="1_rjlel"]
 [ext_resource type="Resource" uid="uid://bkgp6jnu3lnut" path="res://Resources/CardResources/big_loan.tres" id="2_o6ois"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dag60ck0m7n37" path="res://Assets/Cards/PlayCardLayoutBack.png" id="4_7eoxm"]
 [ext_resource type="Texture2D" uid="uid://b2b3yada0mr8y" path="res://Assets/Cards/CardPictures/PlayCard_SmallLoan.png" id="4_sjjv7"]
 [ext_resource type="FontFile" uid="uid://b4nwhv1gcm4oj" path="res://Game/UserInterface/fonts/Kenney High.ttf" id="4_vp6x2"]
+[ext_resource type="PackedScene" uid="uid://j55qjag48pv7" path="res://hover_sfx.tscn" id="7_1hrwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjlel"]
 size = Vector2(54, 78)
@@ -60,6 +61,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CardDescription" type="Label" parent="."]
+visible = false
 clip_contents = true
 offset_left = -24.0
 offset_top = 6.0
@@ -69,6 +71,9 @@ text = "PLACEHOLDER"
 label_settings = SubResource("LabelSettings_sjjv7")
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="HoverSfx" parent="." instance=ExtResource("7_1hrwn")]
+volume_db = -12.0
 
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]

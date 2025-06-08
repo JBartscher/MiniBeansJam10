@@ -12,8 +12,6 @@ func _ready() -> void:
 
 # Calls all cards in DiscardArea
 func _on_turn_progressed() -> void:
-	var cards_to_remove = []
-	
 	for card: Card in cards_on_discard:
 		card.effect.on_discard()
 		#if card.effect.to_destroy():
@@ -24,8 +22,9 @@ func _on_turn_progressed() -> void:
 			card_dummy.global_position = $DiscardDropZone/Center.global_position
 			card_dummy.card_resource = card.card_resource.duplicate()
 			SignalBus.emit_signal("add_card_to_graveyard", card_dummy)
-			cards_to_remove.append(card)
+			DeckController.cards_in_graveyard.append(card.card_resource.duplicate())
 			card.queue_free()
+	# discard pile gets cleared every turn
 	cards_on_discard = []
 
 	
@@ -37,6 +36,8 @@ func _on_deselect(card: Card, area: Area2D):
 		return
 		
 	print("in discard area")
+	$CardDropSfx.play()
+	
 	var pos = $DiscardDropZone/Center.global_position
 	card.target_position = pos
 	card.target_rotation = 0.0

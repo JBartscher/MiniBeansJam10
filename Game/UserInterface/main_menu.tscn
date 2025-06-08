@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bju0ndtlubjcd"]
+
+[ext_resource type="Script" uid="uid://cpowk5qdnxo55" path="res://main_menu.gd" id="1_t6ig6"]
+[ext_resource type="PackedScene" uid="uid://d3cb4ltigx3sk" path="res://Game/UserInterface/background.tscn" id="2_cxju6"]
+[ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="3_65ib4"]
+[ext_resource type="FontFile" uid="uid://b6xq8wq2mosnh" path="res://Game/UserInterface/fonts/balatro.otf" id="3_cxju6"]
+[ext_resource type="FontFile" uid="uid://4uamk5gqxaoh" path="res://Game/UserInterface/fonts/Kenney High Square.ttf" id="4_fjsxg"]
+[ext_resource type="PackedScene" uid="uid://vgdegqx47gq8" path="res://button_click_sfx.tscn" id="6_fjsxg"]
+[ext_resource type="PackedScene" uid="uid://5wps1h8wvlxq" path="res://button_hover_sfx.tscn" id="7_uxytw"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t6ig6")
+
+[node name="Background" parent="." instance=ExtResource("2_cxju6")]
+layout_mode = 1
+script = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 256
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.901961, 0.823529, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0.11276, 0.0672918, 0.0036327, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("3_cxju6")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=100.0, freq=1.2, connected=1]Inevitable Debt[/wave]"
+fit_content = true
+tab_size = 5
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("3_65ib4")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_fjsxg")
+theme_override_font_sizes/font_size = 26
+text = "Start Game"
+
+[node name="ButtonClickSfx" parent="." instance=ExtResource("6_fjsxg")]
+
+[node name="ButtonHoverSfx" parent="." instance=ExtResource("7_uxytw")]
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/NinePatchRect/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NinePatchRect/StartButton" to="." method="_on_start_button_pressed"]

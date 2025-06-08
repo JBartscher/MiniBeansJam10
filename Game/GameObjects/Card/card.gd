@@ -25,6 +25,8 @@ var tween_flip: Tween
 signal hover(card: Card)
 signal select(card: Card)
 
+const PSEUDO_3D = preload("res://Resources/pseudo_3d.tres")
+
 var effect
 
 func _ready() -> void:
@@ -32,7 +34,9 @@ func _ready() -> void:
 	$CardName.text = card_resource.name
 	$CardDescription.text = card_resource.description
 	$BackBufferCopy/CardImage.texture = card_resource.texture
-
+	$BackBufferCopy/CardImage.material = PSEUDO_3D.duplicate(true)
+	$BackBufferCopy/CardLayout.material = PSEUDO_3D.duplicate(true)
+	
 func flip_card_to_front():
 	if tween_flip and tween_flip.is_running():
 		tween_flip.kill()
@@ -116,7 +120,8 @@ func _on_control_gui_input(event: InputEvent) -> void:
 
 func _on_control_mouse_entered() -> void:
 	emit_signal("hover", self)
-
+	$HoverSfx.play()
+	
 	if tween_hover and tween_hover.is_running():
 		tween_hover.kill()
 		

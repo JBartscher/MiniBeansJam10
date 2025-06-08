@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdg16e24bq8uw"]
+[gd_scene load_steps=9 format=3 uid="uid://bdg16e24bq8uw"]
 
 [ext_resource type="Script" uid="uid://tnxj1nkut2mp" path="res://Game/game.gd" id="1_7raqb"]
 [ext_resource type="PackedScene" uid="uid://d2j5vpfkapdfc" path="res://Game/GameObjects/Hand/card_hand.tscn" id="2_1r4le"]
+[ext_resource type="PackedScene" uid="uid://d3cb4ltigx3sk" path="res://Game/UserInterface/background.tscn" id="2_qmv3x"]
 [ext_resource type="PackedScene" uid="uid://ctaq1dyt48vwb" path="res://Game/UserInterface/play_area.tscn" id="4_fwxkx"]
 [ext_resource type="FontFile" uid="uid://ct3xw37ohqjk6" path="res://Game/UserInterface/fonts/Kenney Pixel Square.ttf" id="4_oomkl"]
 [ext_resource type="PackedScene" uid="uid://byi0sia3wn1br" path="res://Game/UserInterface/discard_area.tscn" id="5_qmv3x"]
@@ -18,6 +19,8 @@ font_size = 24
 script = ExtResource("1_7raqb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" parent="CanvasLayer" instance=ExtResource("2_qmv3x")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0

@@ -6,6 +6,8 @@ func on_play():
 	print("go to shop")
 	if len(HandController.cards) > 0:
 		print("still cards in hand, save to next hand")
+		HandController.cards = HandController.cards.filter(func(c:Card): return not null)
+		
 		for c:Card in HandController.cards:
 			HandController.card_buffer_between_scene_transitition.append(c.card_resource)
 		HandController.cards = []

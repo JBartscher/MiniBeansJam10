@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://v1ehd7kxo0nn"]
+
+[ext_resource type="Script" uid="uid://bovnbued57uiy" path="res://Game/UserInterface/game_over.gd" id="1_3rtkj"]
+[ext_resource type="PackedScene" uid="uid://d3cb4ltigx3sk" path="res://Game/UserInterface/background.tscn" id="2_ld8mj"]
+[ext_resource type="Shader" uid="uid://40f2kfgegw0l" path="res://background_swirl.gdshader" id="3_1tcja"]
+[ext_resource type="FontFile" uid="uid://b6xq8wq2mosnh" path="res://Game/UserInterface/fonts/balatro.otf" id="4_2grv1"]
+[ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="5_jg0nd"]
+[ext_resource type="FontFile" uid="uid://4uamk5gqxaoh" path="res://Game/UserInterface/fonts/Kenney High Square.ttf" id="6_jvhyo"]
+[ext_resource type="PackedScene" uid="uid://5wps1h8wvlxq" path="res://button_hover_sfx.tscn" id="7_1tcja"]
+[ext_resource type="PackedScene" uid="uid://vgdegqx47gq8" path="res://button_click_sfx.tscn" id="8_2grv1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl0h4"]
+shader = ExtResource("3_1tcja")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 0.5
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.454537, 0.231117, 0.228792, 1)
+shader_parameter/colour_2 = Color(0.760784, 0.137255, 0.219608, 1)
+shader_parameter/colour_3 = Color(0.0706287, 0.105032, 0.296115, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 700.0
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rtkj")
+
+[node name="Background" parent="." instance=ExtResource("2_ld8mj")]
+material = SubResource("ShaderMaterial_pl0h4")
+layout_mode = 1
+script = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 160)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.901961, 0.823529, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0.11276, 0.0672918, 0.0036327, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("4_2grv1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=100.0, freq=2,5., connected=1]In the end the debt gets everyone![/wave]"
+fit_content = true
+tab_size = 5
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Points" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 160)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.901961, 0.823529, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0.11276, 0.0672918, 0.0036327, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("4_2grv1")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=100.0, freq=2,5., connected=1]You scored [/wave]"
+fit_content = true
+tab_size = 5
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("5_jg0nd")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="ToMenuButton" type="Button" parent="MarginContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_jvhyo")
+theme_override_font_sizes/font_size = 26
+text = "To main MENU"
+
+[node name="ButtonHoverSfx" parent="." instance=ExtResource("7_1tcja")]
+
+[node name="ButtonClickSfx" parent="." instance=ExtResource("8_2grv1")]
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/NinePatchRect/ToMenuButton" to="." method="_on_to_menu_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NinePatchRect/ToMenuButton" to="." method="_on_to_menu_button_pressed"]
