@@ -36,11 +36,15 @@ func _ready() -> void:
 			card.flip_card_to_front()
 			HandController.card_buffer_between_scene_transitition = []
 		# draw two new cards
-		for i in 2:
-			draw(i)
+		#for i in 2:
+			#draw(i)
 	
 	SignalBus.refresh_hand.connect(refresh_card_position)
 	SignalBus.turn_progressed.connect(_on_turn_progressed)
+	SignalBus.draw_to_hand.connect(_on_draw_to_hand)
+
+func _on_draw_to_hand():
+	draw(0.0)
 
 func _on_turn_progressed():
 	# draw two new cards
@@ -48,7 +52,7 @@ func _on_turn_progressed():
 		draw(i)
 
 func add_inital_cards() -> void:
-	for i in 6:
+	for i in 4:
 		var card_resource = DeckController.get_top_card()
 		
 		var card:Card = CARD.instantiate()
