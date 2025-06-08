@@ -59,5 +59,5 @@ func _on_turn_progressed():
 	first_round = false
 	turn += 1
 	print("progress turn to ", turn)
-	if _account_balance <= -100:
+	if _account_balance <= -25:
 		get_tree().change_scene_to_file("res://Game/UserInterface/game_over.tscn")

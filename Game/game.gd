@@ -25,7 +25,7 @@ func animate_balance_value_change(value_before: int, new_value:int):
 	tween.tween_method(count_to, value_before, new_value, 1.2)
 
 func count_to(value:int) -> void:
-	var money_label_fmt_str = "%s$"
+	var money_label_fmt_str = "%sk$"
 	$CanvasLayer/VBoxContainer/Money.text = money_label_fmt_str % value
 	
 func _on_action_progressed():

@@ -8,7 +8,7 @@ func init(card_resource: PlayingCard) -> void:
 	$MarginContainer/HBox/Name.text = card_resource.name
 	$MarginContainer/HBox/Description.text = card_resource.description
 	$MarginContainer/HBox/CardLayout/CardPicture.texture = card_resource.texture
-	var price_fmt_str = "%s$"
+	var price_fmt_str = "%sk$"
 	$MarginContainer/HBox/Price.text = price_fmt_str % card_resource.cost
 	current_card_resource = card_resource
 	
