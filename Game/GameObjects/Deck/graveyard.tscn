@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://du4tar7bvgsel"]
+
+[ext_resource type="Script" uid="uid://c4vw2fsg56au2" path="res://Game/GameObjects/Hand/graveyard.gd" id="1_p5upv"]
+
+[node name="Graveyard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_p5upv")

@@ -8,7 +8,8 @@ var is_returning = false
 var target_position: Vector2
 var target_rotation: float = 0.0
 
-
+var card_front = preload("res://Assets/Cards/PlayCardLayout.png")
+var card_back = preload("res://Assets/Cards/PlayCardLayoutBack.png")
 
 # rotation oscillator
 var displacement := 0.0 
@@ -19,6 +20,7 @@ var oscillator_velocity: float = 0.0
 
 var tween_hover: Tween
 var tween_rotation: Tween
+var tween_flip: Tween
 
 signal hover(card: Card)
 signal select(card: Card)
@@ -26,11 +28,46 @@ signal select(card: Card)
 var effect
 
 func _ready() -> void:
-	print("ready card")
 	effect = card_resource.card_effect.new()
 	$CardName.text = card_resource.name
 	$CardDescription.text = card_resource.description
 	$BackBufferCopy/CardImage.texture = card_resource.texture
+
+func flip_card_to_front():
+	if tween_flip and tween_flip.is_running():
+		tween_flip.kill()
+	
+	var layout : Sprite2D = $BackBufferCopy/CardLayout
+	
+	tween_flip = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween_flip.tween_property(layout, "material:shader_parameter/y_rot", -90.0, 0.2)	
+	tween_flip.chain().tween_callback(_change_card_layout_texture.bind(card_front))
+	tween_flip.chain().tween_property(layout, "material:shader_parameter/y_rot", 90.0, 0.01)
+	tween_flip.chain().tween_property(layout, "material:shader_parameter/y_rot", 0.0, 0.2)
+	tween_flip.parallel().tween_property($BackBufferCopy/CardImage, "visible", true, 0.2)
+	tween_flip.parallel().tween_property($CardName, "visible", true, 0.2)
+	tween_flip.parallel().tween_property($CardDescription, "visible", true, 0.2)
+
+func flip_card_to_back():
+	$BackBufferCopy/CardImage.visible = false
+	$CardName.visible = false
+	$CardDescription.visible = false
+	
+	if tween_flip and tween_flip.is_running():
+		tween_flip.kill()
+	
+	var layout : Sprite2D = $BackBufferCopy/CardLayout
+	
+	tween_flip = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween_flip.tween_property(layout, "material:shader_parameter/y_rot", 90.0, 0.2)
+	tween_flip.chain().tween_callback(_change_card_layout_texture.bind(card_back))
+	
+	tween_flip.chain().tween_property(layout, "material:shader_parameter/y_rot", -90.0, 0.01)
+	tween_flip.chain().tween_property(layout, "material:shader_parameter/y_rot", 0.0, 0.2)
+	
+func _change_card_layout_texture(texture: Texture2D):
+	$BackBufferCopy/CardLayout.texture = texture
+	
 
 func _physics_process(delta: float) -> void:
 	if is_selected:
@@ -50,11 +87,23 @@ func _physics_process(delta: float) -> void:
 		global_position = lerp(global_position, target_position, 5 * delta)
 		rotation = lerp(rotation, target_rotation, 5 * delta)
 
+var front = true
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("click") && is_selected:
 		SignalBus.emit_signal("drop_card",self, $Area2D)
 		is_selected = false
 		is_returning = true
+	
+	if event.is_action("ui_right"):
+		flip_card_to_back()
+	if event.is_action("ui_left"):
+		flip_card_to_front()
+			#flip_card_to_back()
+			#front = false
+		#else: 
+			#flip_card_to_front()
+			#front = true
 
 func _on_control_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):

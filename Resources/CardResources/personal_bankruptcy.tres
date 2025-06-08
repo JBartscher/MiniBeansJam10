@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=4 format=3 uid="uid://b10h4ecqt43j1"]
+
+[ext_resource type="Script" uid="uid://csmslqdou5w4n" path="res://Resources/CardEffects/PersonalBankruptcy.gd" id="1_8hu1v"]
+[ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardBase.gd" id="2_cnw88"]
+[ext_resource type="Texture2D" uid="uid://kyt8pho0ffr8" path="res://Assets/Cards/CardPictures/PlayCard_PersonalBankruptcy.png" id="3_8hu1v"]
+
+[resource]
+script = ExtResource("2_cnw88")
+cost = 10
+texture = ExtResource("3_8hu1v")
+name = "Personal Bankruptcy"
+description = "Removes all bad investments. Destory card."
+card_effect = ExtResource("1_8hu1v")
+can_be_played = true
+can_be_discarded = true
+metadata/_custom_type_script = "uid://lk2ma57o8vk1"

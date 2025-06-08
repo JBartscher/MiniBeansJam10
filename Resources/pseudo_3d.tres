@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxvqo8agydttj"]
+
+[ext_resource type="Shader" uid="uid://cd0eip3bmvisg" path="res://Game/GameObjects/Card/card.gdshader" id="1_i8ve5"]
+
+[resource]
+shader = ExtResource("1_i8ve5")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0

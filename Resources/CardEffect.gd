@@ -4,7 +4,10 @@ class_name CardEffect
 func on_buy():
 	print("base buy")
 	
-func on_sell():
+func on_play():
+	print("base buy")
+	
+func on_discard():
 	print("base sell")
 	
 func on_action():
@@ -13,8 +16,9 @@ func on_action():
 func on_turn():
 	print("base turn")
 	
-func remove_from_game():
-	pass
-
-func remove():
-	pass
+func to_destroy() -> bool:
+	return false
+	
+func to_graveyard() -> bool:
+	return true
+	

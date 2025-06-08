@@ -1,5 +1,7 @@
 extends Node
 
+var first_round = true
+
 var _account_balance: int = 10
 
 var action = 0
@@ -11,10 +13,11 @@ var small_loan_resource = preload("res://Resources/CardResources/small_loan.tres
 var big_loan_resource = preload("res://Resources/CardResources/big_loan.tres")
 var shopping_resource = preload("res://Resources/CardResources/shopping.tres")
 var bad_investment_resource = preload("res://Resources/CardResources/bad_investment.tres")
+var personal_bankruptcy_resource = preload("res://Resources/CardResources/personal_bankruptcy.tres")
 
 var card_pool = []
 
-signal account_balance_changed(account_balance: int)
+signal account_balance_changed(old_account_balance: int, new_account_balance: int)
 
 func _on_change_scene(scene: PackedScene):
 	get_tree().change_scene_to_packed(scene)
@@ -30,9 +33,10 @@ func get_random_card_resource_from_pool() -> PlayingCard:
 	return random_card_resource
 
 func change_account_balance(amount: int):
-	_account_balance += amount
-	emit_signal("account_balance_changed", _account_balance)
-	print("new balance: ", _account_balance)
+	var old_balance = _account_balance
+	var new_balance = _account_balance + amount
+	emit_signal("account_balance_changed", old_balance, new_balance)
+	_account_balance = new_balance 
 
 func _ready() -> void:
 	SignalBus.action_progressed.connect(_on_action_progressed)
@@ -44,6 +48,7 @@ func _ready() -> void:
 	card_pool.append(big_loan_resource)
 	card_pool.append(shopping_resource)
 	card_pool.append(bad_investment_resource)
+	card_pool.append(personal_bankruptcy_resource)
 	
 func _on_action_progressed():
 	action += 1
@@ -53,5 +58,6 @@ func _on_action_progressed():
 		SignalBus.turn_progressed.emit()
 
 func _on_turn_progressed():
+	first_round = false
 	turn += 1
 	print("progress turn to ", turn)

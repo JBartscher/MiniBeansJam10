@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp3m0udbr4qlk"
-path="res://.godot/imported/card_hearts_K.png-48beb587c18160b073589b0b61788bef.ctex"
+uid="uid://kyt8pho0ffr8"
+path="res://.godot/imported/PlayCard_PersonalBankruptcy.png-2956da84bb2073ae057bd52d5ac292f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/card_hearts_K.png"
-dest_files=["res://.godot/imported/card_hearts_K.png-48beb587c18160b073589b0b61788bef.ctex"]
+source_file="res://Assets/Cards/CardPictures/PlayCard_PersonalBankruptcy.png"
+dest_files=["res://.godot/imported/PlayCard_PersonalBankruptcy.png-2956da84bb2073ae057bd52d5ac292f4.ctex"]
 
 [params]
 

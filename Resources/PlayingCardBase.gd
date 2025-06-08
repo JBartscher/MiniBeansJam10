@@ -6,3 +6,5 @@ extends Resource
 @export var name: String
 @export var description: String
 @export var card_effect: GDScript
+@export var can_be_played: bool = true
+@export var can_be_discarded: bool = true

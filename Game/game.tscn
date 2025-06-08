@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdg16e24bq8uw"]
+[gd_scene load_steps=8 format=3 uid="uid://bdg16e24bq8uw"]
 
 [ext_resource type="Script" uid="uid://tnxj1nkut2mp" path="res://Game/game.gd" id="1_7raqb"]
 [ext_resource type="PackedScene" uid="uid://d2j5vpfkapdfc" path="res://Game/GameObjects/Hand/card_hand.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://ctaq1dyt48vwb" path="res://Game/UserInterface/play_area.tscn" id="4_fwxkx"]
 [ext_resource type="FontFile" uid="uid://ct3xw37ohqjk6" path="res://Game/UserInterface/fonts/Kenney Pixel Square.ttf" id="4_oomkl"]
 [ext_resource type="PackedScene" uid="uid://byi0sia3wn1br" path="res://Game/UserInterface/discard_area.tscn" id="5_qmv3x"]
-[ext_resource type="PackedScene" uid="uid://bo7utq1ijgovp" path="res://Game/GameObjects/Deck/deck.tscn" id="6_qmv3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_buohc"]
 font = ExtResource("4_oomkl")
@@ -17,9 +16,6 @@ font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7raqb")
-
-[node name="CardHand" parent="." instance=ExtResource("2_1r4le")]
-position = Vector2(364, 247)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -49,45 +45,20 @@ label_settings = SubResource("LabelSettings_kul4i")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -152.0
+offset_top = 4.0
+offset_right = 152.0
+offset_bottom = 44.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 64
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Play" parent="CanvasLayer/HBoxContainer" instance=ExtResource("4_fwxkx")]
+layout_mode = 2
 
-[node name="Play" parent="CanvasLayer/Control" instance=ExtResource("4_fwxkx")]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -120.0
-offset_top = -16.0
-offset_right = 0.0
-offset_bottom = 16.0
-grow_horizontal = 0
+[node name="Discard" parent="CanvasLayer/HBoxContainer" instance=ExtResource("5_qmv3x")]
+layout_mode = 2
 
-[node name="Discard" parent="CanvasLayer/Control" instance=ExtResource("5_qmv3x")]
-layout_mode = 1
-anchors_preset = 4
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 0.0
-offset_top = -16.0
-offset_right = 120.0
-offset_bottom = 16.0
-grow_horizontal = 1
-
-[node name="Deck" parent="." instance=ExtResource("6_qmv3x")]
-offset_left = 662.0
-offset_top = 36.0
-offset_right = 704.0
-offset_bottom = 95.0
+[node name="CardHand" parent="CanvasLayer" instance=ExtResource("2_1r4le")]
+offset_top = -62.0
+offset_bottom = -62.0

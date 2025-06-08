@@ -1,10 +1,7 @@
 extends Node
 
+var card_buffer_between_scene_transitition = []
 var cards = []
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 func get_card(index: int):
 	return cards[index]

@@ -25,10 +25,13 @@ HandController="*res://Scripts/hand_controller.gd"
 [display]
 
 window/size/viewport_width=720
-window/size/viewport_height=360
+window/size/viewport_height=480
+window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale=1.2
 window/stretch/scale_mode="integer"
 
 [input]

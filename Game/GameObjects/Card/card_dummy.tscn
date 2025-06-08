@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ciniw21uirrmy"]
+
+[ext_resource type="FontFile" uid="uid://b4nwhv1gcm4oj" path="res://Game/UserInterface/fonts/Kenney High.ttf" id="1_itfxq"]
+[ext_resource type="Script" uid="uid://bq4uj4h7xd3v0" path="res://Game/GameObjects/Card/card_dummy.gd" id="1_iy1gk"]
+[ext_resource type="Material" uid="uid://bxvqo8agydttj" path="res://Resources/pseudo_3d.tres" id="2_iy1gk"]
+[ext_resource type="Texture2D" uid="uid://chtlo6opc8jru" path="res://Assets/Cards/PlayCardLayout.png" id="3_dqar8"]
+[ext_resource type="Texture2D" uid="uid://b2b3yada0mr8y" path="res://Assets/Cards/CardPictures/PlayCard_SmallLoan.png" id="4_kibc4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjjv7"]
+font = ExtResource("1_itfxq")
+font_size = 8
+font_color = Color(0.0121738, 0.149541, 0.139935, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CardDummy" type="Node2D"]
+script = ExtResource("1_iy1gk")
+
+[node name="CardLayout" type="Sprite2D" parent="."]
+material = ExtResource("2_iy1gk")
+texture = ExtResource("3_dqar8")
+
+[node name="CardImage" type="Sprite2D" parent="."]
+material = ExtResource("2_iy1gk")
+texture = ExtResource("4_kibc4")
+offset = Vector2(0, -11)
+
+[node name="CardName" type="Label" parent="."]
+clip_contents = true
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = -22.0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_sjjv7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardDescription" type="Label" parent="."]
+clip_contents = true
+offset_left = -24.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 36.0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_sjjv7")
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -1,20 +1,21 @@
 extends CardEffect
 
 var credit_period = 6
-
-func on_sell():
-	print("small loan on action")
 	
-func on_action():
-	print("small loan on action")
-
-func on_buy():
-	print("small loan on buy")
+func on_play():
 	GameState.change_account_balance(5)
 
+func on_discard():
+	credit_period = 0
+
 func on_turn():
-	print("small loan on turn")
 	GameState.change_account_balance(-1)
 	credit_period-= 1
 	if credit_period == 0:
-		print("card is done")
+		print("credit_period is done")
+	
+func to_graveyard() -> bool:
+	if credit_period == 0:
+		return true
+	print("credit not yet paid")
+	return false
