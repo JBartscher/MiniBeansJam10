@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 func _on_graveyard_cards_to_deck():
 	for c in get_children():
-		pass
+		c.queue_free()
 
 func _on_add_card_to_graveyard(dummy_card: DummyCard):
 	if not is_inside_tree():
