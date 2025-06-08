@@ -2,7 +2,7 @@ extends CardEffect
 
 var credit_period = 12
 	
-func on_play():
+func on_play(resource: PlayingCard):
 	var choice = randi() % 2 == 0
 	var current_balance = GameState._account_balance
 	if current_balance <= 0:

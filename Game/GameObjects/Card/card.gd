@@ -3,6 +3,7 @@ class_name Card
 
 @export var card_resource: PlayingCard
 
+var is_selectable = true
 var is_selected = false
 var is_returning = false
 var target_position: Vector2
@@ -99,20 +100,21 @@ func _input(event: InputEvent) -> void:
 		is_selected = false
 		is_returning = true
 	
+	#if event.is_action("ui_right"):
+		#flip_card_to_back()
+	#if event.is_action("ui_left"):
+		#flip_card_to_front()
 	if event.is_action("ui_right"):
-		flip_card_to_back()
-	if event.is_action("ui_left"):
-		flip_card_to_front()
-			#flip_card_to_back()
-			#front = false
-		#else: 
-			#flip_card_to_front()
-			#front = true
+		print("------------------------")
+		for c in DeckController.cards_in_deck:
+			print(c.name)
 
 func _on_control_gui_input(event: InputEvent) -> void:
+	if not is_selectable:
+		return
+	
 	if event.is_action_pressed("click"):
 		is_returning = false
-		print("select on ", self.get_canvas_item())
 		is_selected = true
 		emit_signal("select", self)
 		target_position = global_position

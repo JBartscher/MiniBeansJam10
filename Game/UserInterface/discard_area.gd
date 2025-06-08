@@ -13,10 +13,10 @@ func _ready() -> void:
 # Calls all cards in DiscardArea
 func _on_turn_progressed() -> void:
 	for card: Card in cards_on_discard:
-		card.effect.on_discard()
+		card.effect.on_discard(card.card_resource)
 		#if card.effect.to_destroy():
 			#print("destroy card ", card.card_resource.name)
-		if card.effect.to_graveyard():
+		if card.effect.to_graveyard(card.card_resource):
 			print("move card to graveyard ", card.card_resource.name)
 			var card_dummy:DummyCard = CARD_DUMMY.instantiate()
 			card_dummy.global_position = $DiscardDropZone/Center.global_position
@@ -42,12 +42,13 @@ func _on_deselect(card: Card, area: Area2D):
 	card.target_position = pos
 	card.target_rotation = 0.0
 	card.is_selected = false
+	card.is_selectable = false
 	
 	cards_on_discard.append(card)
 	HandController.cards.erase(card)
 	
 	# call card on action method
-	card.effect.on_action()
+	card.effect.on_action(card.card_resource)
 	
 	SignalBus.emit_signal("refresh_hand")
 	SignalBus.emit_signal("action_progressed")

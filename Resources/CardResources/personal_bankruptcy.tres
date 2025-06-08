@@ -6,11 +6,12 @@
 
 [resource]
 script = ExtResource("2_cnw88")
-cost = 10
+cost = 5
 texture = ExtResource("3_8hu1v")
 name = "Personal Bankruptcy"
 description = "Removes 1 bad investment from deck. Destory card."
 card_effect = ExtResource("1_8hu1v")
 can_be_played = true
 can_be_discarded = true
+active_for_n_turns = 0
 metadata/_custom_type_script = "uid://lk2ma57o8vk1"

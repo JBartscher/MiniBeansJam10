@@ -31,7 +31,6 @@ func _ready() -> void:
 	
 func _on_account_balance_changed(old_account_balance: int, new_account_balance: int):
 	var balance_ratio: float = new_account_balance / 100.0
-	print(balance_ratio)
 	
 	var color1: Color = self.material.get("shader_parameter/colour_1")
 	var color2: Color = self.material.get("shader_parameter/colour_2")

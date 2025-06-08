@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdg16e24bq8uw"]
+[gd_scene load_steps=10 format=3 uid="uid://bdg16e24bq8uw"]
 
 [ext_resource type="Script" uid="uid://tnxj1nkut2mp" path="res://Game/game.gd" id="1_7raqb"]
 [ext_resource type="PackedScene" uid="uid://d2j5vpfkapdfc" path="res://Game/GameObjects/Hand/card_hand.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://d3cb4ltigx3sk" path="res://Game/UserInterface/background.tscn" id="2_qmv3x"]
+[ext_resource type="Texture2D" uid="uid://bg5egciw5aork" path="res://Game/UserInterface/panel-border-016.png" id="3_oomkl"]
 [ext_resource type="PackedScene" uid="uid://ctaq1dyt48vwb" path="res://Game/UserInterface/play_area.tscn" id="4_fwxkx"]
 [ext_resource type="FontFile" uid="uid://ct3xw37ohqjk6" path="res://Game/UserInterface/fonts/Kenney Pixel Square.ttf" id="4_oomkl"]
 [ext_resource type="PackedScene" uid="uid://byi0sia3wn1br" path="res://Game/UserInterface/discard_area.tscn" id="5_qmv3x"]
@@ -22,23 +23,49 @@ script = ExtResource("1_7raqb")
 
 [node name="Background" parent="CanvasLayer" instance=ExtResource("2_qmv3x")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -188.0
+offset_right = 199.0
+offset_bottom = -32.0
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_oomkl")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
 
-[node name="Money" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -58.0
+offset_right = 84.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "0 $"
 label_settings = SubResource("LabelSettings_buohc")
 
-[node name="Action" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Action" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Action: 0/3"
 label_settings = SubResource("LabelSettings_buohc")
 
-[node name="Turn" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Turn" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Turn: 0"

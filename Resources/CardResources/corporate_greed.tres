@@ -6,11 +6,12 @@
 
 [resource]
 script = ExtResource("2_f0dh3")
-cost = 4
+cost = 3
 texture = ExtResource("3_meoo0")
 name = "Corporate Greed"
 description = "When played draw 2 Cards"
 card_effect = ExtResource("1_meoo0")
 can_be_played = true
-can_be_discarded = true
+can_be_discarded = false
+active_for_n_turns = 0
 metadata/_custom_type_script = "uid://lk2ma57o8vk1"

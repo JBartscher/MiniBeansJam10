@@ -25,7 +25,6 @@ func _on_change_scene(scene: PackedScene):
 
 func get_random_card_resource_from_pool() -> PlayingCard:
 	var random_card_resource = card_pool.pick_random()
-	print(len(card_pool))
 	return random_card_resource
 
 func change_account_balance(amount: int):

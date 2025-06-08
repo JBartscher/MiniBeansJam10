@@ -26,6 +26,7 @@ func _ready() -> void:
 
 	else:
 		# recreate cards from last turn
+		HandController.cards = []
 		for c_r in HandController.card_buffer_between_scene_transitition:
 			var card:Card = CARD.instantiate()
 			card.card_resource = c_r
@@ -35,6 +36,7 @@ func _ready() -> void:
 			add_child(card)
 			card.flip_card_to_front()
 			HandController.card_buffer_between_scene_transitition = []
+		refresh_card_position()
 		# draw two new cards
 		#for i in 2:
 			#draw(i)
@@ -53,7 +55,7 @@ func _on_turn_progressed():
 
 func add_inital_cards() -> void:
 	for i in 4:
-		var card_resource = DeckController.get_top_card()
+		var card_resource = DeckController.get_top_card_of_deck()
 		
 		var card:Card = CARD.instantiate()
 		card.card_resource = card_resource
@@ -70,20 +72,21 @@ func add_inital_cards() -> void:
 
 func draw(i : int):
 	var card:Card = CARD.instantiate()
-	var card_resource = DeckController.get_top_card()
-	card.card_resource = card_resource.duplicate()
-	HandController.add_card_to_hand(card)
-	card.connect("hover", _on_hover_card)
-	card.connect("select", _on_select_card)
-	var transform: Transform2D = $Deck.get_transform()
-	card.global_position = Vector2(transform.origin)
-	add_child(card)
-	from_deck_to_hand(card, i*0.1)
-	card.flip_card_to_front()
+	var card_resource = DeckController.get_top_card_of_deck()
+	if card_resource:
+		card.card_resource = card_resource.duplicate()
+		HandController.add_card_to_hand(card)
+		card.connect("hover", _on_hover_card)
+		card.connect("select", _on_select_card)
+		var transform: Transform2D = $Deck.get_transform()
+		card.global_position = Vector2(transform.origin)
+		add_child(card)
+		from_deck_to_hand(card, i*0.1)
+		card.flip_card_to_front()
 	
-	if not is_inside_tree():
-		return
-	draw_card_tween.tween_callback(refresh_card_position).set_delay(0.15)
+		if not is_inside_tree():
+			return
+		draw_card_tween.tween_callback(refresh_card_position).set_delay(0.15)
 
 func from_deck_to_hand(card: Card, t: float):
 	if not is_inside_tree():
@@ -97,7 +100,7 @@ func _on_hover_card(card: Card):
 	current_hovered_card = card	
 	
 func _on_select_card(card: Card):
-	print("select card: ", card)
+	#print("select card: ", card)
 	current_selected_card = card	
 
 func refresh_card_position():

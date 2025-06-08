@@ -26,12 +26,12 @@ func animate_balance_value_change(value_before: int, new_value:int):
 
 func count_to(value:int) -> void:
 	var money_label_fmt_str = "%sk$"
-	$CanvasLayer/VBoxContainer/Money.text = money_label_fmt_str % value
+	$CanvasLayer/NinePatchRect/VBoxContainer/Money.text = money_label_fmt_str % value
 	
 func _on_action_progressed():
 	var action_label_fmt_str = "Action: %s/3"
-	$CanvasLayer/VBoxContainer/Action.text = action_label_fmt_str % GameState.action
+	$CanvasLayer/NinePatchRect/VBoxContainer/Action.text = action_label_fmt_str % GameState.action
 
 func _on_turn_progressed():
 	var turn_label_fmt_str = "Turn: %s"
-	$CanvasLayer/VBoxContainer/Turn.text = turn_label_fmt_str % GameState.turn
+	$CanvasLayer/NinePatchRect/VBoxContainer/Turn.text = turn_label_fmt_str % GameState.turn

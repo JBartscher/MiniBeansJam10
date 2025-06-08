@@ -6,11 +6,12 @@
 
 [resource]
 script = ExtResource("2_rqoe1")
-cost = 4
+cost = 0
 texture = ExtResource("3_rqoe1")
 name = "Big Loan"
-description = "Get 10k$. Pay back 1k$ for 12 turns."
+description = "Get 4k$. Pay back 1k$ for 5 turns."
 card_effect = ExtResource("1_3y42s")
 can_be_played = true
 can_be_discarded = true
+active_for_n_turns = 5
 metadata/_custom_type_script = "uid://lk2ma57o8vk1"

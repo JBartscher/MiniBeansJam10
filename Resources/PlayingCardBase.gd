@@ -8,3 +8,4 @@ extends Resource
 @export var card_effect: GDScript
 @export var can_be_played: bool = true
 @export var can_be_discarded: bool = true
+@export var active_for_n_turns: int = 0
