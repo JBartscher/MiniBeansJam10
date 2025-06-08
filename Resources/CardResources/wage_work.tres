@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=4 format=3 uid="uid://dkjeb2e0tp0at"]
+
+[ext_resource type="Script" uid="uid://og7vxh7t5box" path="res://Resources/CardEffects/WageWork.gd" id="1_7ry5u"]
+[ext_resource type="Script" uid="uid://lk2ma57o8vk1" path="res://Resources/PlayingCardBase.gd" id="2_y3ly8"]
+[ext_resource type="Texture2D" uid="uid://j1j453tiqfvr" path="res://Assets/Cards/CardPictures/PlayCard_WageWork.png" id="3_7ry5u"]
+
+[resource]
+script = ExtResource("2_y3ly8")
+cost = 1
+texture = ExtResource("3_7ry5u")
+name = "Wage Work"
+description = "Earn 1k. Takes 2 Actions"
+card_effect = ExtResource("1_7ry5u")
+can_be_played = true
+can_be_discarded = false
+active_for_n_turns = 0
+metadata/_custom_type_script = "uid://lk2ma57o8vk1"

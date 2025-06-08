@@ -35,7 +35,7 @@ func init():
 	cards_in_graveyard.append(GameState.bad_investment_resource)
 	
 	cards_in_deck = []
-	cards_in_deck.append(GameState.big_loan_resource)
+	cards_in_deck.append(GameState.wage_work_resource)
 	cards_in_deck.append(GameState.small_loan_resource)
 	cards_in_deck.append(GameState.shopping_resource)
 	cards_in_deck.append(GameState.corporate_greed_resource)

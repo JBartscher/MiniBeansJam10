@@ -104,6 +104,9 @@ func _on_select_card(card: Card):
 	current_selected_card = card	
 
 func refresh_card_position():
+	if not is_inside_tree():
+		return
+		
 	var tween = get_tree().create_tween()
 	
 	for c in HandController.cards:

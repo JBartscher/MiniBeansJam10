@@ -15,6 +15,7 @@ var bad_investment_resource = preload("res://Resources/CardResources/bad_investm
 var personal_bankruptcy_resource = preload("res://Resources/CardResources/personal_bankruptcy.tres")
 var corporate_greed_resource = preload("res://Resources/CardResources/corporate_greed.tres")
 var crypto_scam_resource = preload("res://Resources/CardResources/crypto_scam.tres")
+var wage_work_resource = preload("res://Resources/CardResources/wage_work.tres")
 
 var card_pool = []
 
@@ -46,6 +47,7 @@ func _ready() -> void:
 	card_pool.append(personal_bankruptcy_resource)
 	card_pool.append(corporate_greed_resource)
 	card_pool.append(crypto_scam_resource)
+	card_pool.append(wage_work_resource)
 	
 func _on_action_progressed():
 	action += 1

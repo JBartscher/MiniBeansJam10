@@ -1,6 +1,5 @@
 extends Control
 
-
 func _ready() -> void:
 	GameState._account_balance = 10
 	GameState.turn = 0
